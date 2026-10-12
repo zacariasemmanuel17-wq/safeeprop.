@@ -60,11 +60,13 @@
 
                 <div class="grid-2">
                     <div class="form-group">
-                        <label for="pubTipo">Tipo de Propiedad:</label>
-                        <select id="pubTipo" required>
-                            <option value="Casa">Casa Urbana</option>
-                            <option value="Edificio">Edificio Comercial/Residencial</option>
-                            <option value="Terreno Ejidal">Terreno Ejidal (Parcelario)</option>
+                        <label for="tipo">Tipo de inmueble:</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="Casa">Casa</option>
+                            <option value="Terreno">Terreno</option>
+                            <option value="Departamento">Departamento</option>
+                            <option value="Local comercial">Local comercial</option>
+                            <option value="Edificio">Edificio</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -81,8 +83,19 @@
 
                 <div class="grid-2">
                     <div class="form-group">
-                        <label for="pubPrecio">Precio Solicitado (MXN):</label>
-                        <input type="number" id="pubPrecio" placeholder="0.00" min="1" step="0.01" required>
+                        <label for="ubicacion">Ubicación exacta o Colonia:</label>
+                        <input id="ubicacion" name="ubicacion" required maxlength="200" placeholder="Ej. Av. Patria #123, Zapopan">
+                    </div>
+                    <div class="form-group">
+                        <label for="superficie">Superficie en m²:</label>
+                        <input id="superficie" name="superficie" type="number" min="0.01" step="0.01" required placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="precio">Precio en MXN:</label>
+                        <input id="precio" name="precio" type="number" min="1" step="0.01" required placeholder="0.00">
                     </div>
                     <div class="form-group">
                         <label for="pubDocumento">Documento de Soporte (Legalidad):</label>
@@ -100,11 +113,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pubDesc">Descripción de la propiedad y estatus legal:</label>
-                    <textarea id="pubDesc" rows="3" placeholder="Detalla las características y confirma si cuentas con el Derecho del Tanto notificado o pagos de predial al corriente." required></textarea>
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" maxlength="5000" placeholder="Detalla las características, estatus legal y confirma si cuentas con el Derecho del Tanto..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary">Subir Publicación Verificada</button>
+                <button type="submit" class="btn-primary">Enviar para revisión</button>
+                <p id="mensaje-formulario" role="status" style="margin-top: 10px; font-weight: bold;"></p>
             </form>
         </div>
 
@@ -137,5 +151,8 @@
     </div>
 
     <script src="script.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
 </body>
 </html>
